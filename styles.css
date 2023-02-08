@@ -1,0 +1,164 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+* ::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: auto;
+  height: auto;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+  color: black;
+  height: 100px;
+  font-size: 40pt;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  text-align: center;
+  width: auto;
+  height: auto;
+  border-spacing: 0px;
+  border-collapse: initial;
+  position: absolute;
+}
+
+div#cover {
+  position: none;
+}
+
+#player {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-color: black;
+  color: black;
+  z-index: 10000;
+  border-radius: 50px;
+}
+
+button {
+  background-color: orange;
+  color: black;
+  font-size: 25pt;
+  border: 2px solid black;
+  width: 300px;
+  height: 150px;
+  cursor: pointer;
+}
+
+section {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: grey;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: black;
+  font-size: 15pt;
+  height: 50px;
+}
+
+tr {
+  border: none;
+}
+
+td {
+  width: 25px;
+  height: 35px;
+  margin: 0px;
+  border: none;
+  padding: 0px;
+}
+
+#win {
+  background-color: red;
+  color: red;
+}
+
+.wall {
+  color: black;
+  background-color: black;
+}
+
+.freespace {
+  color: aqua;
+  background-color: aqua;
+}
+
+#start {
+  color: green;
+  background-color: green;
+}
+
+.hide {
+  display: none;
+}
+.score {
+  background-color: black;
+  margin-left: 50px;
+  margin-top: 10px;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.2rem;
+}
+.time {
+  margin-left: 170px;
+  margin-top: 10px;
+  color: white;
+  font-family: fantasy;
+  font-size: 1.2rem;
+}
+.restart-btn {
+  width: 10rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.lose-modal {
+  background: url("/src/scary.png");
+  background-size: cover;
+  background-position: center;
+  justify-content: space-between;
+}
+
+.rounded {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: blue;
+  z-index: 1000;
+  cursor: pointer;
+}
+h4 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100000;
+}
+.level {
+  color: white;
+}
