@@ -197,6 +197,7 @@ let loadPage = () => {
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     rounded.addEventListener("pointerenter", (e) => {
+      e.preventDefault();
       gamesSetup.inPlay = true;
       document.body.style.cursor = "none";
     });
