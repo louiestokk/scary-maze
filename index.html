@@ -7,61 +7,19 @@
       name="description"
       content="Play scary maze and get through the first four original mazes to get free access to the full game with 50 levels. There are many merges to get such as t-shirt, sunglasses and much more. Connect your digital wallet and start playing scary maze."
     />
-    <!-- <script defer src="script.js" type="text/javascript"></script> -->
+    <script defer src="script.js" type="text/javascript"></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Play Scary Maze for free. Scary-Maze.com</title>
-    <style>
-      .container {
-        position: relative;
-      }
-      button {
-        position: absolute;
-        z-index: 99;
-        background: transparent;
-        color: orange;
-        height: 4rem;
-        border: 1px solid orange;
-        border-radius: 5px;
-        width: 12rem;
-        left: calc(42%);
-        top: calc(45%);
-      }
-      h2 {
-        position: absolute;
-        top: calc(20%);
-        color: orange;
-        left: calc(40%);
-        max-width: 400px;
-        text-align: center;
-      }
-      .hide {
-        display: none;
-      }
-    </style>
   </head>
 
   <body>
-    <div class="container">
-      <video
-        src="/src/intro.mp4"
-        autoplay
-        type="video/mp4"
-        preload="auto"
-      ></video>
-      <div class="start-container hide">
-        <a href="/game.html">
-          <button>Start Game</button>
-        </a>
-        <h2>www.scary-maze.com</h2>
+    <div class="rounded hide"></div>
+    <div id="cover">
+      <div>
+        <h4 class="score hide"></h4>
+        <h4 class="time"></h4>
       </div>
+      <table></table>
     </div>
-    <script defer>
-      const startContainer = document.querySelector(".start-container");
-      window.addEventListener("DOMContentLoaded", (e) => {
-        setTimeout(() => {
-          startContainer.classList.remove("hide");
-        }, 500);
-      });
-    </script>
   </body>
 </html>
