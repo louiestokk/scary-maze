@@ -88,9 +88,9 @@ let gamesSetup = {
   speed: 13,
   score: 0,
   clientX: 60,
-  clientY: 450,
+  clientY: 500,
   inPlay: false,
-  levelIndex: 3,
+  levelIndex: 0,
   time: 0
 };
 
@@ -189,17 +189,13 @@ let loadPage = () => {
   const timePoint = () => {
     gamesSetup.time++;
     time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
-
-    // här behöver jag veta vad gamesSetup.score är vid collision av win
-    // och beroenden på tiden får poäng
-    // 60s-gamesSetup.score=points
   };
   // mouseevent
-  window.addEventListener("mousemove", (e) => {
+  window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-    rounded.addEventListener("mouseenter", (e) => {
+    rounded.addEventListener("pointerenter", (e) => {
       gamesSetup.inPlay = true;
       document.body.style.cursor = "none";
     });
@@ -208,7 +204,7 @@ let loadPage = () => {
     //
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      // if (isCollided(rounded, wall)) lose();
+      if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win) => {
@@ -224,8 +220,7 @@ let loadPage = () => {
       }
     });
   });
-  // touchevent
-
   setInterval(timePoint, 1000);
+  // touchevent
 };
 window.addEventListener("DOMContentLoaded", loadPage);
