@@ -105,6 +105,7 @@ const time = document.querySelector(".time");
 const rounded = document.querySelector(".rounded");
 let min = 60;
 let points = 0;
+let endTimeforUser = 0;
 
 let loadPage = () => {
   let getRideOfMenu = () => {
@@ -150,28 +151,36 @@ let loadPage = () => {
   const drawMaze = (maze) => {
     rounded.style.transform = `translate3d(${gamesSetup.clientX}px, ${gamesSetup.clientY}px, 0)`;
     clearTable(tableEl);
-    for (let i = 0; i < currentLevel.length; i++) {
-      let rowEl = document.createElement("tr");
-      tableEl.appendChild(rowEl);
-      for (let x = 0; x < currentLevel[i].length; x++) {
-        let tdEl = document.createElement("td");
-        rowEl.appendChild(tdEl);
-        tdEl.innerHTML = maze[i].charAt(x);
-        switch (maze[i].charAt(x)) {
-          case "#":
-            tdEl.setAttribute("class", "wall");
-            break;
-          case ".":
-            tdEl.setAttribute("class", "freespace");
-            break;
-          case "_":
-            tdEl.setAttribute("id", "start");
-            break;
-          case "!":
-            tdEl.setAttribute("id", "win");
-            break;
+    if (currentLevel) {
+      for (let i = 0; i < currentLevel.length; i++) {
+        let rowEl = document.createElement("tr");
+        tableEl.appendChild(rowEl);
+        for (let x = 0; x < currentLevel[i].length; x++) {
+          let tdEl = document.createElement("td");
+          rowEl.appendChild(tdEl);
+          tdEl.innerHTML = maze[i].charAt(x);
+          switch (maze[i].charAt(x)) {
+            case "#":
+              tdEl.setAttribute("class", "wall");
+              break;
+            case ".":
+              tdEl.setAttribute("class", "freespace");
+              break;
+            case "_":
+              tdEl.setAttribute("id", "start");
+              break;
+            case "!":
+              tdEl.setAttribute("id", "win");
+              break;
+          }
         }
       }
+    } else {
+      clearInterval(startTimer);
+      // gamesSetup.time = 0;
+      // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
+      // console.log("mål");
+      // show modal med poäng och tid samt knapp att spela igen
     }
   };
   const isCollided = (a, b) => {
@@ -191,7 +200,7 @@ let loadPage = () => {
     gamesSetup.time++;
     time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  // mouseevent
+  // events
   window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     let mouseY = e.clientY;
@@ -203,10 +212,9 @@ let loadPage = () => {
     });
     if (gamesSetup.inPlay)
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-    //
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      if (isCollided(rounded, wall)) lose();
+      // if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win) => {
@@ -219,10 +227,14 @@ let loadPage = () => {
         points += min - gamesSetup.time;
         gamesSetup.time = 0;
         scoreBoard.innerHTML = `Score: ${Number(points)}`;
+        let finsihedTimeat = levels.length * 60;
+        if (gamesSetup.levelIndex === 4) {
+          endTimeforUser = `${finsihedTimeat - points}s`;
+          time.innerHTML = `Done on: ${endTimeforUser}`;
+        }
       }
     });
   });
-  setInterval(timePoint, 1000);
-  // touchevent
+  const startTimer = setInterval(timePoint, 1000);
 };
 window.addEventListener("DOMContentLoaded", loadPage);

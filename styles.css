@@ -120,18 +120,16 @@ td {
 }
 .score {
   background-color: black;
-  margin-left: 50px;
   margin-top: 10px;
   color: white;
   font-family: fantasy;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .time {
-  margin-left: 170px;
-  margin-top: 10px;
+  margin-top: 30px;
   color: white;
   font-family: fantasy;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .restart-btn {
   width: 10rem;
@@ -162,4 +160,8 @@ h4 {
 }
 .level {
   color: white;
+}
+.score-holder {
+  display: flex;
+  flex-direction: column;
 }
