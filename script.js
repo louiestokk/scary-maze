@@ -177,10 +177,6 @@ let loadPage = () => {
       }
     } else {
       clearInterval(startTimer);
-      // gamesSetup.time = 0;
-      // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
-      // console.log("mål");
-      // show modal med poäng och tid samt knapp att spela igen
     }
   };
   const isCollided = (a, b) => {
@@ -214,7 +210,7 @@ let loadPage = () => {
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      // if (isCollided(rounded, wall)) lose();
+      if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win) => {
@@ -230,7 +226,16 @@ let loadPage = () => {
         let finsihedTimeat = levels.length * 60;
         if (gamesSetup.levelIndex === 4) {
           endTimeforUser = `${finsihedTimeat - points}s`;
-          time.innerHTML = `Done on: ${endTimeforUser}`;
+          time.innerHTML = `Done in: ${endTimeforUser}`;
+          const restartBtn = document.createElement("button");
+          restartBtn.innerHTML = "Restart Game";
+          restartBtn.classList.add("restart-btn");
+          rounded.classList.add("hide");
+          document.querySelector(".score-holder").append(restartBtn);
+          restartBtn.addEventListener(
+            "click",
+            () => (window.location.href = "/")
+          );
         }
       }
     });
