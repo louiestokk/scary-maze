@@ -213,7 +213,7 @@ let loadPage = () => {
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      if (isCollided(rounded, wall)) lose();
+      // if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win) => {
