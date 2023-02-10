@@ -167,3 +167,9 @@ h4 {
   display: flex;
   flex-direction: column;
 }
+@media only screen and (max-width: 600px) {
+  .rounded {
+    width: 15px;
+    height: 15px;
+  }
+}
