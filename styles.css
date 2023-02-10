@@ -139,10 +139,11 @@ td {
   border-radius: 5px;
 }
 .lose-modal {
-  background: url("/src/scary.png");
+  /* background: url("/src/scary.png");
   background-size: cover;
   background-position: center;
-  justify-content: space-between;
+  justify-content: space-between; */
+  background: black;
 }
 
 .rounded {

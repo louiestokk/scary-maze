@@ -120,9 +120,9 @@ let loadPage = () => {
   let lose = () => {
     scoreBoard.classList.add("hide");
     time.classList.add("hide");
-    let scaryAudio = document.createElement("audio");
-    scaryAudio.src = "/src/scream.mp3";
-    scaryAudio.autoplay = true;
+    // let scaryAudio = document.createElement("audio");
+    // scaryAudio.src = "/src/scream.mp3";
+    // scaryAudio.autoplay = true;
     let looseP = document.createElement("section");
     looseP.classList.add("lose-modal");
     let h1 = document.createElement("h1");
@@ -134,12 +134,10 @@ let loadPage = () => {
     button.textContent = "Restart Game";
     button.setAttribute("onclick", "window.location.reload();");
     button.setAttribute("type", "button");
-    body.append(scaryAudio);
+    // body.append(scaryAudio);
     body.appendChild(looseP);
-    setTimeout(() => {
-      looseP.appendChild(h1);
-      looseP.appendChild(button);
-    }, 1000);
+    looseP.appendChild(h1);
+    looseP.appendChild(button);
   };
 
   const clearTable = (tableEl) => {
