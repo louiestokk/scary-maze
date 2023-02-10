@@ -138,6 +138,8 @@ let loadPage = () => {
     body.appendChild(looseP);
     looseP.appendChild(h1);
     looseP.appendChild(button);
+    rounded.style.opacity = 0;
+    document.body.style.cursor = "default";
   };
 
   const clearTable = (tableEl) => {
