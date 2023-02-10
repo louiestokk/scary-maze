@@ -36,13 +36,12 @@ table {
   border-spacing: 0px;
   border-collapse: initial;
   position: absolute;
+  touch-action: none;
 }
 
 div#cover {
-  height: 100%;
+  position: none;
   overflow: hidden;
-  width: 100%;
-  position: fixed;
 }
 
 #player {
