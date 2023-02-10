@@ -197,11 +197,11 @@ let loadPage = () => {
     time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
   // events
-  window.addEventListener("touchmove", (e) => {
+  window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-    rounded.addEventListener("touchstart", (e) => {
+    rounded.addEventListener("pointerenter", (e) => {
       e.preventDefault();
       gamesSetup.inPlay = true;
       document.body.style.cursor = "none";
