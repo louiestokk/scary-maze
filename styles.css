@@ -36,7 +36,6 @@ table {
   border-spacing: 0px;
   border-collapse: initial;
   position: absolute;
-  touch-action: none;
 }
 
 div#cover {
