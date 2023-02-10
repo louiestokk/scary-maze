@@ -198,6 +198,7 @@ let loadPage = () => {
   };
   // events
   window.addEventListener("pointermove", (e) => {
+    console.log(e);
     e.preventDefault();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
