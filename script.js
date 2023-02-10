@@ -198,12 +198,13 @@ let loadPage = () => {
   };
   // events
   window.addEventListener("pointermove", (e) => {
-    console.log(e);
     e.preventDefault();
+    e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     rounded.addEventListener("pointerenter", (e) => {
       e.preventDefault();
+      e.stopPropagation();
       gamesSetup.inPlay = true;
       document.body.style.cursor = "none";
     });
