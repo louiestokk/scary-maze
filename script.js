@@ -197,57 +197,12 @@ let loadPage = () => {
     time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
   // events
-  window.addEventListener("mousemove", (e) => {
+  window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-    rounded.addEventListener("mouseenter", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      gamesSetup.inPlay = true;
-      document.body.style.cursor = "none";
-    });
-    if (gamesSetup.inPlay)
-      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-
-    document.querySelectorAll(".wall ").forEach((wall) => {
-      if (isCollided(rounded, wall)) lose();
-    });
-
-    document.querySelectorAll("#win").forEach((win) => {
-      if (isCollided(rounded, win)) {
-        let stopper = levels[(gamesSetup.levelIndex += 1)];
-        currentLevel = stopper;
-        clearTable(tableEl);
-        drawMaze(currentLevel);
-        clearInterval(timePoint);
-        points += min - gamesSetup.time;
-        gamesSetup.time = 0;
-        scoreBoard.innerHTML = `Score: ${Number(points)}`;
-        let finsihedTimeat = levels.length * 60;
-        if (gamesSetup.levelIndex === 4) {
-          endTimeforUser = `${finsihedTimeat - points}s`;
-          time.innerHTML = `Done in: ${endTimeforUser}`;
-          const restartBtn = document.createElement("button");
-          restartBtn.innerHTML = "Restart Game";
-          restartBtn.classList.add("restart-btn");
-          rounded.classList.add("hide");
-          document.querySelector(".score-holder").append(restartBtn);
-          restartBtn.addEventListener(
-            "click",
-            () => (window.location.href = "/")
-          );
-        }
-      }
-    });
-  });
-  window.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    let mouseY = e.clientY;
-    let mouseX = e.clientX;
-    rounded.addEventListener("touchmove", (e) => {
+    rounded.addEventListener("pointerenter", (e) => {
       e.preventDefault();
       e.stopPropagation();
       gamesSetup.inPlay = true;
