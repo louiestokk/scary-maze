@@ -147,8 +147,8 @@ td {
 }
 
 .rounded {
-  width: 30px;
-  height: 30px;
+  width: 12.5px;
+  height: 12.5px;
   border-radius: 50%;
   background: blue;
   z-index: 1000;
