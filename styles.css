@@ -28,7 +28,6 @@ h1 {
 }
 
 table {
-  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -168,8 +167,5 @@ h4 {
   .rounded {
     width: 15px;
     height: 15px;
-  }
-  .table {
-    margin-top: 0;
   }
 }
