@@ -195,6 +195,7 @@ let loadPage = () => {
     gamesSetup.time++;
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
+  const test = "f";
 
   rounded.addEventListener("pointerenter", (e) => {
     e.preventDefault();
