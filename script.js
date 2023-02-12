@@ -210,26 +210,24 @@ let loadPage = () => {
     gamesSetup.time++;
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  const pointerEnter = (e) => {
+
+  rounded.addEventListener("pointerenter", (e) => {
     e.preventDefault();
     e.stopPropagation();
+    rounded.setPointerCapture(e.pointerId);
     gamesSetup.inPlay = true;
     document.body.style.cursor = "none";
-  };
-  rounded.addEventListener("pointerenter", (e) => {
-    pointerEnter(e);
-    rounded.setPointerCapture(e.pointerId);
   });
   // events
   window.addEventListener("pointermove", (e) => {
-    rounded.removeEventListener("pointerenter", pointerEnter);
     e.preventDefault();
     e.stopPropagation();
-    rounded.removeEventListener("pointerenter", pointerEnter);
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (gamesSetup.inPlay)
-      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      rounded.style.transform = `translate3d(${mouseX + 30}px, ${
+        mouseY + 30
+      }px, 0)`;
 
     document.querySelectorAll(".wall ").forEach((wall) => {
       // if (isCollided(rounded, wall)) lose();
