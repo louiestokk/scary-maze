@@ -210,17 +210,21 @@ let loadPage = () => {
     gamesSetup.time++;
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  rounded.addEventListener("pointerenter", (e) => {
-    rounded.setPointerCapture(e.pointerId);
+  const pointerEnter = (e) => {
     e.preventDefault();
     e.stopPropagation();
     gamesSetup.inPlay = true;
     document.body.style.cursor = "none";
+  };
+  rounded.addEventListener("pointerenter", (e) => {
+    pointerEnter(e);
+    rounded.setPointerCapture(e.pointerId);
   });
   // events
   window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     e.stopPropagation();
+    rounded.removeEventListener("pointerenter", pointerEnter);
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (gamesSetup.inPlay)
