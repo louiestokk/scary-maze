@@ -222,16 +222,13 @@ let loadPage = () => {
   });
   // events
   window.addEventListener("pointermove", (e) => {
-    const rect = rounded.getBoundingClientRect();
     e.preventDefault();
     e.stopPropagation();
     rounded.removeEventListener("pointerenter", pointerEnter);
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (gamesSetup.inPlay)
-      rounded.style.transform = `translate3d(${
-        mouseX - rect.width
-      }px, ${mouseY}px, 0)`;
+      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
     document.querySelectorAll(".wall ").forEach((wall) => {
       // if (isCollided(rounded, wall)) lose();
