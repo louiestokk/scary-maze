@@ -118,9 +118,9 @@ const detectMobiledevice = () => {
     navigator.userAgent.match(/BlackBerry/i) ||
     navigator.userAgent.match(/Windows Phone/i)
   ) {
-    alert("mobile");
+    console.log("mobile");
   } else {
-    alert("desktop");
+    console.log("desktop");
   }
 };
 let loadPage = () => {
@@ -210,7 +210,8 @@ let loadPage = () => {
     gamesSetup.time++;
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  document.body.addEventListener("pointerenter", (e) => {
+  rounded.addEventListener("pointerenter", (e) => {
+    rounded.setPointerCapture(e.pointerId);
     e.preventDefault();
     e.stopPropagation();
     gamesSetup.inPlay = true;
