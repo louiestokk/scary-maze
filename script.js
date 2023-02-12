@@ -218,13 +218,13 @@ let loadPage = () => {
     document.body.style.cursor = "none";
   });
   // events
-  document.body.addEventListener("pointermove", (e) => {
+  window.addEventListener("pointermove", (e) => {
     e.preventDefault();
     e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (gamesSetup.inPlay)
-      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 50}px, 0)`;
+      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 70}px, 0)`;
 
     document.querySelectorAll(".wall ").forEach((wall) => {
       // if (isCollided(rounded, wall)) lose();
