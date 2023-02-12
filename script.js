@@ -211,7 +211,7 @@ let loadPage = () => {
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
 
-  tableEl.addEventListener("pointerenter", (e) => {
+  rounded.addEventListener("pointerenter", (e) => {
     e.preventDefault();
     e.stopPropagation();
     gamesSetup.inPlay = true;
