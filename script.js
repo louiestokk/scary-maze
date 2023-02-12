@@ -195,18 +195,21 @@ let loadPage = () => {
     gamesSetup.time++;
     // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  const startPlayer = () => {
-    rounded.addEventListener("pointerenter", (e) => {
-      e.preventDefault();
-      // e.stopPropagation();
-      gamesSetup.inPlay = true;
-      document.body.style.cursor = "none";
-    });
-  };
-  startPlayer();
+
+  rounded.addEventListener("pointerenter", (e) => {
+    if (
+      !tableEl ||
+      !document.querySelector("tr") ||
+      !document.querySelector("td")
+    )
+      return;
+    e.preventDefault();
+    // e.stopPropagation();
+    gamesSetup.inPlay = true;
+    document.body.style.cursor = "none";
+  });
   // events
   window.addEventListener("pointermove", (e) => {
-    rounded.removeEventListener("pointerenter", startPlayer());
     e.preventDefault();
     // e.stopPropagation();
     let mouseY = e.clientY;
