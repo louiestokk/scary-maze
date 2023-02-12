@@ -169,4 +169,7 @@ h4 {
     width: 15px;
     height: 15px;
   }
+  .table {
+    margin-top: 0;
+  }
 }
