@@ -65,7 +65,7 @@ let maze3 = [
   `#########################`
 ];
 let maze4 = [
-  `###########...#########`,
+  `###########..##########`,
   `###########............##`,
   `###########............##`,
   `######################.##`,
@@ -80,9 +80,9 @@ let maze4 = [
   `###.######################`,
   `###.######################`,
   `###........###############`,
-  `##########.##########!!!#`,
-  `##########...........!!!##`,
-  `#####################!!!#`
+  `##########.##########___##`,
+  `##########...........!__##`,
+  `#####################___##`
 ];
 
 let gamesSetup = {
@@ -100,17 +100,34 @@ let currentLevel = levels[gamesSetup.levelIndex];
 let body = document.querySelector("body");
 let divTable = document.getElementById("cover");
 let tableEl = document.querySelector("table");
-let scoreBoard = document.querySelector(".score");
-const time = document.querySelector(".time");
+const scoreHolder = document.querySelector(".score-holder");
+// let scoreBoard = document.querySelector(".score");
+// const time = document.querySelector(".time");
 const rounded = document.querySelector(".rounded");
 let min = 60;
 let points = 0;
 let endTimeforUser = 0;
-
+let pointsHolder = [];
+const detectMobiledevice = () => {
+  if (
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    alert("mobile");
+  } else {
+    alert("desktop");
+  }
+};
 let loadPage = () => {
+  detectMobiledevice();
   let getRideOfMenu = () => {
-    scoreBoard.classList.remove("hide");
-    scoreBoard.innerHTML = `Score: ${Number(gamesSetup.score)}`;
+    // scoreBoard.classList.remove("hide");
+    // scoreBoard.innerHTML = `Score: ${Number(gamesSetup.score)}`;
     body.style.flexDirection = "row";
     body.style.justifyContent = "flex-start";
     body.style.alignItems = "flex-start";
@@ -118,11 +135,9 @@ let loadPage = () => {
   getRideOfMenu();
   rounded.classList.remove("hide");
   let lose = () => {
-    scoreBoard.classList.add("hide");
-    time.classList.add("hide");
-    // let scaryAudio = document.createElement("audio");
-    // scaryAudio.src = "/src/scream.mp3";
-    // scaryAudio.autoplay = true;
+    // scoreBoard.classList.add("hide");
+    // time.classList.add("hide");
+
     let looseP = document.createElement("section");
     looseP.classList.add("lose-modal");
     let h1 = document.createElement("h1");
@@ -134,7 +149,6 @@ let loadPage = () => {
     button.textContent = "Restart Game";
     button.setAttribute("onclick", "window.location.reload();");
     button.setAttribute("type", "button");
-    // body.append(scaryAudio);
     body.appendChild(looseP);
     looseP.appendChild(h1);
     looseP.appendChild(button);
@@ -167,7 +181,7 @@ let loadPage = () => {
               tdEl.setAttribute("class", "freespace");
               break;
             case "_":
-              tdEl.setAttribute("id", "start");
+              tdEl.setAttribute("id", "behindwin");
               break;
             case "!":
               tdEl.setAttribute("id", "win");
@@ -194,9 +208,9 @@ let loadPage = () => {
   // timer
   const timePoint = () => {
     gamesSetup.time++;
-    time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
+    // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
   };
-  rounded.addEventListener("pointerenter", (e) => {
+  document.body.addEventListener("pointerenter", (e) => {
     e.preventDefault();
     e.stopPropagation();
     gamesSetup.inPlay = true;
@@ -208,7 +222,6 @@ let loadPage = () => {
     e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-
     if (gamesSetup.inPlay)
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
@@ -224,17 +237,17 @@ let loadPage = () => {
         drawMaze(currentLevel);
         clearInterval(timePoint);
         points += min - gamesSetup.time;
+        // scoreBoard.innerHTML = `Score: ${Number(points)}`;
         gamesSetup.time = 0;
-        scoreBoard.innerHTML = `Score: ${Number(points)}`;
         let finsihedTimeat = levels.length * 60;
         if (gamesSetup.levelIndex === 4) {
           endTimeforUser = `${finsihedTimeat - points}s`;
-          time.innerHTML = `Done in: ${endTimeforUser}`;
+          // time.innerHTML = `Done in: ${endTimeforUser}`;
           const restartBtn = document.createElement("button");
           restartBtn.innerHTML = "Restart Game";
           restartBtn.classList.add("restart-btn");
           rounded.classList.add("hide");
-          document.querySelector(".score-holder").append(restartBtn);
+          scoreHolder.append(restartBtn);
           restartBtn.addEventListener(
             "click",
             () => (window.location.href = "/")
