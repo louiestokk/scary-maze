@@ -222,6 +222,7 @@ let loadPage = () => {
   });
   // events
   window.addEventListener("pointermove", (e) => {
+    rounded.removeEventListener("pointerenter", pointerEnter);
     e.preventDefault();
     e.stopPropagation();
     rounded.removeEventListener("pointerenter", pointerEnter);
