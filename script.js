@@ -108,23 +108,8 @@ let min = 60;
 let points = 0;
 let endTimeforUser = 0;
 let pointsHolder = [];
-const detectMobiledevice = () => {
-  if (
-    navigator.userAgent.match(/Android/i) ||
-    navigator.userAgent.match(/webOS/i) ||
-    navigator.userAgent.match(/iPhone/i) ||
-    navigator.userAgent.match(/iPad/i) ||
-    navigator.userAgent.match(/iPod/i) ||
-    navigator.userAgent.match(/BlackBerry/i) ||
-    navigator.userAgent.match(/Windows Phone/i)
-  ) {
-    console.log("mobile");
-  } else {
-    console.log("desktop");
-  }
-};
+
 let loadPage = () => {
-  detectMobiledevice();
   let getRideOfMenu = () => {
     // scoreBoard.classList.remove("hide");
     // scoreBoard.innerHTML = `Score: ${Number(gamesSetup.score)}`;
@@ -223,8 +208,20 @@ let loadPage = () => {
     e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-    if (gamesSetup.inPlay)
+
+    if (
+      (gamesSetup.inPlay && navigator.userAgent.match(/Android/i)) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i) ||
+      navigator.userAgent.match(/iPad/i) ||
+      navigator.userAgent.match(/iPod/i) ||
+      navigator.userAgent.match(/BlackBerry/i) ||
+      navigator.userAgent.match(/Windows Phone/i)
+    ) {
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 70}px, 0)`;
+    } else if (gamesSetup.inPlay) {
+      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    }
 
     document.querySelectorAll(".wall ").forEach((wall) => {
       // if (isCollided(rounded, wall)) lose();
