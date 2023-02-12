@@ -197,12 +197,6 @@ let loadPage = () => {
   };
 
   rounded.addEventListener("pointerenter", (e) => {
-    if (
-      !tableEl ||
-      !document.querySelector("tr") ||
-      !document.querySelector("td")
-    )
-      return;
     e.preventDefault();
     // e.stopPropagation();
     gamesSetup.inPlay = true;
@@ -210,6 +204,7 @@ let loadPage = () => {
   });
   // events
   window.addEventListener("pointermove", (e) => {
+    body.style.touchAction = "none";
     e.preventDefault();
     // e.stopPropagation();
     let mouseY = e.clientY;
