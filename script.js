@@ -208,7 +208,6 @@ let loadPage = () => {
     e.stopPropagation();
     let mouseY = e.clientY;
     let mouseX = e.clientX;
-
     if (
       (gamesSetup.inPlay && navigator.userAgent.match(/Android/i)) ||
       navigator.userAgent.match(/webOS/i) ||
@@ -224,7 +223,7 @@ let loadPage = () => {
     }
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      // if (isCollided(rounded, wall)) lose();
+      if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win) => {
