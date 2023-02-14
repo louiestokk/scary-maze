@@ -176,7 +176,7 @@ let loadPage = () => {
   rounded.style.transform = `translate3d(${gamesSetup.clientX}px, ${gamesSetup.clientY}px, 0)`;
   let getRideOfMenu = () => {
     scoreBoard.classList.remove("hide");
-    scoreBoard.innerHTML = `S${Number(gamesSetup.score)} `;
+    scoreBoard.innerHTML = `S:${Number(gamesSetup.score)} `;
     body.style.flexDirection = "row";
     body.style.justifyContent = "flex-start";
     body.style.alignItems = "flex-start";
@@ -312,7 +312,7 @@ let loadPage = () => {
         drawMaze(currentLevel);
         clearInterval(timePoint);
         points += min - gamesSetup.time;
-        scoreBoard.innerHTML = `S${Number(points)} `;
+        scoreBoard.innerHTML = `S:${Number(points)} `;
         gamesSetup.time = 0;
         let finsihedTimeat = levels.length * 60;
         if (gamesSetup.levelIndex === levels.length) {
