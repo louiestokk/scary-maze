@@ -40,9 +40,10 @@ table {
 .score-holder {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  width: 120px;
+  width: 100px;
+  height: 15px;
   font-size: 0.9rem;
   color: red;
   font-weight: bold;
