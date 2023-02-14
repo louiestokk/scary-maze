@@ -182,7 +182,7 @@ let loadPage = () => {
     body.style.alignItems = "flex-start";
   };
   getRideOfMenu();
-  // level.innerHTML = `L ${gamesSetup.levelIndex + 1}`;
+  level.innerHTML = `L ${gamesSetup.levelIndex + 1}`;
   level.innerHTML = "";
   rounded.classList.remove("hide");
   let lose = () => {
@@ -275,7 +275,8 @@ let loadPage = () => {
       e.target.classList.contains("freespace") ||
       e.target.classList.contains("rounded") ||
       e.target.id === "win" ||
-      e.target.id === "behindwin"
+      e.target.id === "behindwin" ||
+      e.target.classList.contains("wall")
     ) {
     } else {
       return;
@@ -305,8 +306,7 @@ let loadPage = () => {
       if (isCollided(rounded, win)) {
         let stopper = levels[gamesSetup.levelIndex + 1];
         currentLevel = stopper;
-
-        // level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
+        level.innerHTML = `L:${(gamesSetup.levelIndex += 1)}`;
         level.innerHTML = "";
         clearTable(tableEl);
         drawMaze(currentLevel);
