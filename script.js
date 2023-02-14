@@ -302,9 +302,9 @@ let loadPage = () => {
 
     document.querySelectorAll("#win").forEach((win, i) => {
       if (isCollided(rounded, win)) {
-        let stopper = levels[(gamesSetup.levelIndex += 1)];
+        let stopper = levels[gamesSetup.levelIndex + 1];
         currentLevel = stopper;
-        console.log(i);
+
         level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
         clearTable(tableEl);
         drawMaze(currentLevel);
