@@ -42,7 +42,9 @@ table {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
+  width: auto;
+  z-index: 100000000;
+  max-width: 240px;
   height: 15px;
   font-size: 0.9rem;
   color: red;
