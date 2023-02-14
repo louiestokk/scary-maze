@@ -270,7 +270,6 @@ let loadPage = () => {
 
   window.addEventListener("pointermove", (e) => {
     e.preventDefault();
-    tableEl.style.cursor = "none";
     if (
       e.target.classList.contains("freespace") ||
       e.target.classList.contains("rounded") ||
