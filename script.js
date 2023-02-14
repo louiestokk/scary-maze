@@ -173,6 +173,7 @@ let endTimeforUser = 0;
 let pointsHolder = [];
 
 let loadPage = () => {
+  rounded.style.transform = `translate3d(${gamesSetup.clientX}px, ${gamesSetup.clientY}px, 0)`;
   let getRideOfMenu = () => {
     scoreBoard.classList.remove("hide");
     scoreBoard.innerHTML = `S ${Number(gamesSetup.score)}`;
@@ -213,7 +214,6 @@ let loadPage = () => {
   };
 
   const drawMaze = (maze) => {
-    rounded.style.transform = `translate3d(${gamesSetup.clientX}px, ${gamesSetup.clientY}px, 0)`;
     clearTable(tableEl);
     if (currentLevel) {
       for (let i = 0; i < currentLevel.length; i++) {
