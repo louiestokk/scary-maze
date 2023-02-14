@@ -84,7 +84,70 @@ let maze4 = [
   `##########...........!__##`,
   `#####################___##`
 ];
-
+let maze5 = [
+  `###!!#################`,
+  `###.#####################`,
+  `###.####################`,
+  `###.#####################`,
+  `###.######################`,
+  `###.........##############`,
+  `#######.###.##############`,
+  `#######.....#####......###`,
+  `##########.######.####.###`,
+  `###...............####.###`,
+  `###.#######..#########.###`,
+  `###.#######........###.###`,
+  `###.#######.#####......###`,
+  `###.........#########.####`,
+  `##########.##########.####`,
+  `##########.##########.####`,
+  `##########.########...####`,
+  `##########............####`
+];
+let maze6 = [
+  `###...#################`,
+  `###..###............###`,
+  `###.####.##########.###`,
+  `###.####......#####.###`,
+  `###.#########.#####.###`,
+  `###.####......####_!_#####`,
+  `###.####.#########___###`,
+  `###.####.........########`,
+  `###.############.#########`,
+  `###.############.########`,
+  `###.############.#########`,
+  `###.####.........#########`,
+  `###.####.#################`,
+  `###.####.........#########`,
+  `###.############.#########`,
+  `###.############.#########`,
+  `###.############.#########`,
+  `###..............#########`,
+  `##########################`,
+  `##########################`
+];
+let maze7 = [
+  `######################`,
+  `########################`,
+  `###!###################`,
+  `###.##############.......`,
+  `###.##############.....#.`,
+  `###.##############.......`,
+  `###.##############.#####`,
+  `###............###.#####`,
+  `##############.#...#######`,
+  `###............#.########`,
+  `###.############.#########`,
+  `###.####.........#########`,
+  `###.####.#################`,
+  `###.####.........#########`,
+  `###.############.#########`,
+  `###.############.#########`,
+  `###.############.#########`,
+  `###..............#########`,
+  `##########################`,
+  `##########################`
+];
 let gamesSetup = {
   speed: 13,
   score: 0,
@@ -95,14 +158,14 @@ let gamesSetup = {
   time: 0
 };
 
-let levels = [maze1, maze2, maze3, maze4];
+let levels = [maze1, maze2, maze3, maze4, maze5, maze6, maze7];
 let currentLevel = levels[gamesSetup.levelIndex];
 let body = document.querySelector("body");
 let divTable = document.getElementById("cover");
 let tableEl = document.querySelector("table");
-const scoreHolder = document.querySelector(".score-holder");
-// let scoreBoard = document.querySelector(".score");
-// const time = document.querySelector(".time");
+let scoreBoard = document.querySelector(".score");
+const level = document.querySelector(".level");
+const time = document.querySelector(".time");
 const rounded = document.querySelector(".rounded");
 let min = 60;
 let points = 0;
@@ -111,18 +174,18 @@ let pointsHolder = [];
 
 let loadPage = () => {
   let getRideOfMenu = () => {
-    // scoreBoard.classList.remove("hide");
-    // scoreBoard.innerHTML = `Score: ${Number(gamesSetup.score)}`;
+    scoreBoard.classList.remove("hide");
+    scoreBoard.innerHTML = `S ${Number(gamesSetup.score)}`;
     body.style.flexDirection = "row";
     body.style.justifyContent = "flex-start";
     body.style.alignItems = "flex-start";
   };
   getRideOfMenu();
+  level.innerHTML = `L ${gamesSetup.levelIndex + 1}`;
   rounded.classList.remove("hide");
   let lose = () => {
-    // scoreBoard.classList.add("hide");
-    // time.classList.add("hide");
-
+    scoreBoard.classList.add("hide");
+    time.classList.add("hide");
     let looseP = document.createElement("section");
     looseP.classList.add("lose-modal");
     let h1 = document.createElement("h1");
@@ -134,7 +197,9 @@ let loadPage = () => {
     button.textContent = "Restart Game";
     button.setAttribute("onclick", "window.location.reload();");
     button.setAttribute("type", "button");
-    body.appendChild(looseP);
+    divTable.appendChild(looseP);
+    divTable.style.width = "100vw";
+    looseP.style.width = "100vw";
     looseP.appendChild(h1);
     looseP.appendChild(button);
     rounded.style.opacity = 0;
@@ -193,20 +258,28 @@ let loadPage = () => {
   // timer
   const timePoint = () => {
     gamesSetup.time++;
-    // time.innerHTML = `Time: ${Number(gamesSetup.time)}s`;
+    time.innerHTML = `${Number(gamesSetup.time)}s`;
   };
 
   rounded.addEventListener("pointerenter", (e) => {
     e.preventDefault();
-    // e.stopPropagation();
+    tableEl.style.cursor = "none";
     gamesSetup.inPlay = true;
-    document.body.style.cursor = "none";
   });
   // events
+
   window.addEventListener("pointermove", (e) => {
-    body.style.touchAction = "none";
+    if (
+      e.target.classList.contains("freespace") ||
+      e.target.classList.contains("rounded") ||
+      e.target.id === "win"
+    ) {
+    } else {
+      return;
+    }
+
     e.preventDefault();
-    // e.stopPropagation();
+
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (
@@ -227,25 +300,32 @@ let loadPage = () => {
       if (isCollided(rounded, wall)) lose();
     });
 
-    document.querySelectorAll("#win").forEach((win) => {
+    document.querySelectorAll("#win").forEach((win, i) => {
       if (isCollided(rounded, win)) {
         let stopper = levels[(gamesSetup.levelIndex += 1)];
         currentLevel = stopper;
+        level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
         clearTable(tableEl);
         drawMaze(currentLevel);
         clearInterval(timePoint);
         points += min - gamesSetup.time;
-        // scoreBoard.innerHTML = `Score: ${Number(points)}`;
+        scoreBoard.innerHTML = `S ${Number(points)}`;
         gamesSetup.time = 0;
         let finsihedTimeat = levels.length * 60;
-        if (gamesSetup.levelIndex === 4) {
+        if (gamesSetup.levelIndex === levels.length) {
           endTimeforUser = `${finsihedTimeat - points}s`;
-          // time.innerHTML = `Done in: ${endTimeforUser}`;
+          time.innerHTML = `Done in: ${endTimeforUser}`;
+          const div = document.createElement("div");
+          const h2 = document.createElement("h2");
+          h2.style.color = "white";
+          h2.textContent = "God job";
           const restartBtn = document.createElement("button");
           restartBtn.innerHTML = "Restart Game";
           restartBtn.classList.add("restart-btn");
           rounded.classList.add("hide");
-          scoreHolder.append(restartBtn);
+          div.append(h2);
+          div.append(restartBtn);
+          document.body.append(div);
           restartBtn.addEventListener(
             "click",
             () => (window.location.href = "/")
