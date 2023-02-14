@@ -269,6 +269,7 @@ let loadPage = () => {
   // events
 
   window.addEventListener("pointermove", (e) => {
+    gamesSetup.inPlay = true;
     if (
       e.target.classList.contains("freespace") ||
       e.target.classList.contains("rounded") ||
