@@ -328,7 +328,16 @@ let loadPage = () => {
           rounded.classList.add("hide");
           div.append(h2);
           div.append(restartBtn);
-          document.body.append(div);
+          div.style.display = "flex";
+          div.style.flexDirection = "column";
+          div.style.alignItems = "center";
+          div.style.jus = "center";
+          divTable.append(div);
+          divTable.style.display = "flex";
+          divTable.style.flexDirection = "column";
+          divTable.style.alignItems = "center";
+          divTable.style.jus = "center";
+
           restartBtn.addEventListener(
             "click",
             () => (window.location.href = "/")
