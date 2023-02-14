@@ -261,10 +261,14 @@ let loadPage = () => {
     time.innerHTML = `${Number(gamesSetup.time)}s`;
   };
 
+  rounded.addEventListener("pointerenter", (e) => {
+    e.preventDefault();
+    tableEl.style.cursor = "none";
+    gamesSetup.inPlay = true;
+  });
   // events
 
   window.addEventListener("pointermove", (e) => {
-    gamesSetup.inPlay = true;
     e.preventDefault();
     tableEl.style.cursor = "none";
     if (
