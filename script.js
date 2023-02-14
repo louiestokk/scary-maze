@@ -290,6 +290,7 @@ let loadPage = () => {
       navigator.userAgent.match(/BlackBerry/i) ||
       navigator.userAgent.match(/Windows Phone/i)
     ) {
+      gamesSetup.inPlay = true;
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 70}px, 0)`;
     } else if (gamesSetup.inPlay) {
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
@@ -303,7 +304,7 @@ let loadPage = () => {
       if (isCollided(rounded, win)) {
         let stopper = levels[(gamesSetup.levelIndex += 1)];
         currentLevel = stopper;
-        console.log((gamesSetup.levelIndex += 1));
+        console.log(i);
         level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
         clearTable(tableEl);
         drawMaze(currentLevel);
