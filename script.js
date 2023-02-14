@@ -182,7 +182,8 @@ let loadPage = () => {
     body.style.alignItems = "flex-start";
   };
   getRideOfMenu();
-  level.innerHTML = `L ${gamesSetup.levelIndex + 1}`;
+  // level.innerHTML = `L ${gamesSetup.levelIndex + 1}`;
+  level.innerHTML = "";
   rounded.classList.remove("hide");
   let lose = () => {
     scoreBoard.classList.add("hide");
@@ -305,7 +306,8 @@ let loadPage = () => {
         let stopper = levels[gamesSetup.levelIndex + 1];
         currentLevel = stopper;
 
-        level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
+        // level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
+        level.innerHTML = "";
         clearTable(tableEl);
         drawMaze(currentLevel);
         clearInterval(timePoint);
