@@ -196,6 +196,9 @@ let loadPage = () => {
     button.classList.add("restart-btn");
     clearTable(tableEl);
     h1.textContent = "GAME OVER";
+    scoreBoard.innerHTML = "";
+    time.innerHTML = "";
+    document.querySelector(".score-holder").classList.add("hide");
     button.textContent = "Restart Game";
     button.setAttribute("onclick", "window.location.reload();");
     button.setAttribute("type", "button");
