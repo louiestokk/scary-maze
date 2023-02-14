@@ -299,7 +299,7 @@ let loadPage = () => {
     }
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      // if (isCollided(rounded, wall)) lose();
+      if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win, i) => {
@@ -322,6 +322,8 @@ let loadPage = () => {
           const h2 = document.createElement("h2");
           h2.style.color = "white";
           h2.textContent = "God job";
+          scoreBoard.innerHTML = `Tot score: ${Number(points)}`;
+          time.innerHTML = "";
           const restartBtn = document.createElement("button");
           restartBtn.innerHTML = "Restart Game";
           restartBtn.classList.add("restart-btn");
