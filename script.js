@@ -261,15 +261,12 @@ let loadPage = () => {
     time.innerHTML = `${Number(gamesSetup.time)}s`;
   };
 
-  // rounded.addEventListener("pointerenter", (e) => {
-  //   e.preventDefault();
-  //   tableEl.style.cursor = "none";
-  //   gamesSetup.inPlay = true;
-  // });
   // events
 
   window.addEventListener("pointermove", (e) => {
     gamesSetup.inPlay = true;
+    e.preventDefault();
+    tableEl.style.cursor = "none";
     if (
       e.target.classList.contains("freespace") ||
       e.target.classList.contains("rounded") ||
@@ -278,8 +275,6 @@ let loadPage = () => {
     } else {
       return;
     }
-
-    e.preventDefault();
 
     let mouseY = e.clientY;
     let mouseX = e.clientX;
