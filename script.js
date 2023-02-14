@@ -38,10 +38,10 @@ let maze2 = [
   `#####################....`,
   `#####################....`,
   `#####################....`,
-  `#!!......................`
+  `#_!......................`
 ];
 let maze3 = [
-  `####################!!!####`,
+  `####################___####`,
   `####################!!!####`,
   `#####################.#####`,
   `#####################.###`,
@@ -273,12 +273,12 @@ let loadPage = () => {
     if (
       e.target.classList.contains("freespace") ||
       e.target.classList.contains("rounded") ||
-      e.target.id === "win"
+      e.target.id === "win" ||
+      e.target.id === "behindwin"
     ) {
     } else {
       return;
     }
-
     let mouseY = e.clientY;
     let mouseX = e.clientX;
     if (
@@ -296,13 +296,14 @@ let loadPage = () => {
     }
 
     document.querySelectorAll(".wall ").forEach((wall) => {
-      if (isCollided(rounded, wall)) lose();
+      // if (isCollided(rounded, wall)) lose();
     });
 
     document.querySelectorAll("#win").forEach((win, i) => {
       if (isCollided(rounded, win)) {
         let stopper = levels[(gamesSetup.levelIndex += 1)];
         currentLevel = stopper;
+        console.log((gamesSetup.levelIndex += 1));
         level.innerHTML = `L ${(gamesSetup.levelIndex += 1)}`;
         clearTable(tableEl);
         drawMaze(currentLevel);
