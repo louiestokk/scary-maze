@@ -147,7 +147,7 @@ let loadPage = () => {
       navigator.userAgent.match(/Windows Phone/i)
     ) {
       gamesSetup.inPlay = true;
-      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 70}px, 0)`;
+      rounded.style.transform = `translate3d(${mouseX}px, ${mouseY - 60}px, 0)`;
     } else if (gamesSetup.inPlay) {
       rounded.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     }
