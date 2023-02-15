@@ -146,8 +146,8 @@ td {
 }
 
 .rounded {
-  width: 12.5px;
-  height: 12.5px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: blue;
   z-index: 1000;
@@ -168,9 +168,9 @@ h4 {
   align-items: center;
   margin-top: 0.5rem;
 }
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .rounded {
     width: 15px;
     height: 15px;
   }
-}
+} */
